@@ -10,7 +10,7 @@ Professional charts from CSV, XLSX, and YAML data files. Zero dependencies, pure
 RubyCharts.from_csv('sales.csv')
   .type(:pie)
   .title('Q1 Sales Distribution')
-  .save_png('report.png')
+  .save('report.png')
 ```
 
 ---
@@ -94,7 +94,7 @@ require 'ruby_charts'
 RubyCharts.from_csv('data.csv')
   .type(:pie)
   .title('Product Distribution')
-  .save_png('chart.png')
+  .save('chart.png')
 ```
 
 **CSV Format:**
@@ -111,7 +111,7 @@ Orange,120
 RubyCharts.from_xlsx('data.xlsx', sheet: 'Sales')
   .type(:bar)
   .title('Monthly Sales')
-  .save_png('chart.png')
+  .save('chart.png')
 ```
 
 **XLSX Format:**
@@ -126,7 +126,7 @@ RubyCharts.from_xlsx('data.xlsx', sheet: 'Sales')
 RubyCharts.from_yaml('data.yml')
   .type(:line)
   .title('Growth Trend')
-  .save_png('chart.png')
+  .save('chart.png')
 ```
 
 **YAML Format:**
@@ -151,7 +151,7 @@ data = {
 RubyCharts.from_hash(data)
   .type(:bar)
   .title('Quarterly Performance')
-  .save_png('chart.png')
+  .save('chart.png')
 ```
 
 ---
@@ -178,7 +178,7 @@ RubyCharts.from_csv('sales.csv')
   .colors(['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A'])
   .legend(position: :right)
   .font('/path/to/font.ttf')
-  .save_png('report.png')
+  .save('report.png')
 ```
 
 #### Options
@@ -191,7 +191,7 @@ RubyCharts.from_csv('sales.csv')
 | `colors()` | Array | System colors | RGB color array: `['#FF6B6B', '#4ECDC4']` |
 | `legend()` | Symbol | `:right` | Legend position |
 | `font()` | String | Auto-detect | Path to TrueType font |
-| `save_png()` | String | N/A | Output filename |
+| `save()` | String | N/A | Output filename |
 
 ---
 
@@ -217,12 +217,12 @@ RubyCharts.from_csv('sales.csv')
   .title('Product Sales Distribution')
   .subtitle('Month of May 2024')
   .colors(['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A'])
-  .save_png('sales_pie.png')
+  .save('sales_pie.png')
 
 RubyCharts.from_csv('sales.csv')
   .type(:horizontal_bar)
   .title('Product Sales Ranking')
-  .save_png('sales_bar.png')
+  .save('sales_bar.png')
 ```
 
 ### Example 2: Trading Analysis
@@ -249,7 +249,7 @@ RubyCharts.from_hash(data)
   .title('Bitcoin 30-Day Price Trend')
   .subtitle('Data from CoinGecko')
   .colors(['#F7931A'])
-  .save_png('bitcoin_trend.png')
+  .save('bitcoin_trend.png')
 ```
 
 ### Example 3: Rails Admin Dashboard
@@ -274,7 +274,7 @@ class Admin::DashboardController < ApplicationController
     RubyCharts.from_hash(data)
       .type(:pie)
       .title('Sales by Product')
-      .save_png("tmp/sales_#{Time.now.to_i}.png")
+      .save("tmp/sales_#{Time.now.to_i}.png")
   end
 
   def generate_revenue_chart
@@ -289,7 +289,7 @@ class Admin::DashboardController < ApplicationController
     RubyCharts.from_hash(data)
       .type(:line)
       .title('Revenue Trend')
-      .save_png("tmp/revenue_#{Time.now.to_i}.png")
+      .save("tmp/revenue_#{Time.now.to_i}.png")
   end
 end
 ```
@@ -319,7 +319,7 @@ class ReportMailer < ApplicationMailer
     RubyCharts.from_hash(data)
       .type(:bar)
       .title("#{@user.name}'s Monthly Summary")
-      .save_png("tmp/report_#{@user.id}_#{Date.today}.png")
+      .save("tmp/report_#{@user.id}_#{Date.today}.png")
   end
 end
 ```
@@ -338,7 +338,7 @@ class Api::ChartsController < ApplicationController
     filename = RubyCharts.from_hash(data)
       .type(:line)
       .title("#{symbol} Price Chart")
-      .save_png("public/charts/#{symbol}.png")
+      .save("public/charts/#{symbol}.png")
     
     # Return image
     send_file filename, type: 'image/png'
@@ -405,7 +405,7 @@ Use hex colors or RGB arrays:
 100.times do |i|
   RubyCharts.from_csv("data_#{i}.csv")
     .type(:pie)
-    .save_png("output_#{i}.png")
+    .save("output_#{i}.png")
 end
 ```
 
@@ -426,7 +426,7 @@ RubyCharts::Config.font(:regular)
 RubyCharts.from_csv('data.csv')
   .type(:pie)
   .font('/path/to/your/font.ttf')
-  .save_png('chart.png')
+  .save('chart.png')
 ```
 
 **Font paths by OS:**
@@ -444,7 +444,7 @@ RubyCharts.from_csv('data.csv')
   .type(:pie)
   # Chart is 1200x700 by default
   # This is sufficient for most uses
-  .save_png('chart.png')
+  .save('chart.png')
 ```
 
 ### Colors Not Appearing
