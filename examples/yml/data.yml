@@ -1,0 +1,11 @@
+data:
+  - name: January
+    value: 5000
+  - name: February
+    value: 7200
+  - name: March
+    value: 6800
+  - name: April
+    value: 8100
+  - name: May
+    value: 7500

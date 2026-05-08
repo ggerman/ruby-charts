@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  ruby-charts:
+    build: .
+    container_name: ruby4
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: bash
